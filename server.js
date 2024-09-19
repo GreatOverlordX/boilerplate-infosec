@@ -3,11 +3,12 @@
  * the verification process may break
  *******************************************/
 
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 app.disable("x-powered-by");
-var fs = require("fs");
-var path = require("path");
+const fs = require("fs");
+const path = require("path");
+
 
 app.use(function (req, res, next) {
   res.set({
@@ -31,10 +32,10 @@ app.get("/file/*?", function (req, res, next) {
   });
 });
 
-var main = require("./myApp.js");
+let main = require("./myApp.js");
 app.get("/app-info", function (req, res) {
   // list middlewares mounted on the '/' camper's app
-  var appMainRouteStack = main._router.stack
+  let appMainRouteStack = main._router.stack
     .filter((s) => s.path === "")
     .map((l) => l.name)
     // filter out express default middlewares
@@ -43,10 +44,10 @@ app.get("/app-info", function (req, res) {
     );
 
   // filter out CORS Headers
-  var hs = Object.keys(res.getHeaders()).filter(
+  let hs = Object.keys(res.getHeaders()).filter(
     (h) => !h.match(/^access-control-\w+/)
   );
-  var hObj = {};
+  let hObj = {};
   hs.forEach((h) => {
     hObj[h] = res.getHeaders()[h];
   });

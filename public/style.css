@@ -1,6 +1,13 @@
 body {
-  background-color: #ddd;
-  color: #333;
+  background-color: #b8b8b8;
+  color: #0a0a0a;
   font-family: sans-serif;
   text-align: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center; 
 }
